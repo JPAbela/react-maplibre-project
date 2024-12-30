@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import Map from './Map';
+import MyMap from './Map';
 import './App.css';
 
 export default function App() {
@@ -7,7 +7,7 @@ export default function App() {
     <div>
       <h1>MapLibre Map in React</h1>
       <div className='mapBox'>
-        <Map />
+        <MyMap />
       </div>
     </div>
   );
