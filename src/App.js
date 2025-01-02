@@ -4,11 +4,11 @@ import './App.css';
 
 export default function App() {
   return (
-    <div>
-      <h1>MapLibre Map in React</h1>
+    <>
+      <h1 style={{position:'absolute', left:'40%'}}>DC Crime Data 2024</h1>
       <div className='mapBox'>
         <MyMap />
       </div>
-    </div>
+    </>
   );
 }

@@ -1,18 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
-import Map, {Marker} from 'react-map-gl';
+import Map, {Source, Layer} from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css'; // Correct mapbox-gl stylesheet import
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoianBhYmVsYTAzIiwiYSI6ImNtNWE1OGF6bDNmZzYyaXB3aHZvb3l1OTkifQ.LvtLNNEZDUJpAOdCKXY53w"
 const zoomStart = 10;
 
-// const layerStyle = {
-//   id: 'point',
-//   type: 'circle',
-//   paint: {
-//     'circle-radius': 10,
-//     'circle-color': '#007cbf'
-//   }
-// };
+const layerStyle = {
+  id: 'point',
+  type: 'circle',
+  paint: {
+    'circle-radius': 10,
+    'circle-color': '#007cbf'
+  }
+};
 
 export default function MyMap() {
   const [geojsonData, setGeojsonData] = useState(null);
@@ -35,7 +35,6 @@ export default function MyMap() {
   }, []);
 
   if (!geojsonData) {
-    // Show a loading state while waiting for GeoJSON data to load
     return <div>Loading map...</div>;
   }
 
@@ -50,15 +49,9 @@ export default function MyMap() {
       style={{width: '100%', height: '100%'}}
       mapStyle="mapbox://styles/mapbox/streets-v9"
     >
-    {geojsonData.features.map((feature) => (
-        <Marker
-          key={feature.properties.CCN} // Use a unique property from GeoJSON
-          latitude={feature.geometry.coordinates[1]} // GeoJSON has [lng, lat]
-          longitude={feature.geometry.coordinates[0]}
-        >
-          <div style={{ cursor: 'pointer' }}>📍</div>
-        </Marker>
-      ))}
+    <Source id="my-data" type="geojson" data={geojsonData}>
+      <Layer {...layerStyle} />
+    </Source>
     </Map>  
   );
 }
