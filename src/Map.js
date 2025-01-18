@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import Map, {Source, Layer} from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css'; // Correct mapbox-gl stylesheet import
 
-const MAPBOX_TOKEN = "pk.eyJ1IjoianBhYmVsYTAzIiwiYSI6ImNtNWE1OGF6bDNmZzYyaXB3aHZvb3l1OTkifQ.LvtLNNEZDUJpAOdCKXY53w"
+const MAPBOX_TOKEN = ""
 const zoomStart = 10;
 
 const layerStyle = {
